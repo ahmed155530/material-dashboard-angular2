@@ -1,0 +1,91 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row mat-toggle">
+            <mat-slide-toggle (change)="GetTableType($event)">{{viewType|translate}}</mat-slide-toggle>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">{{'Branches'|translate}}</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body" *ngIf="viewType === 'Card'">
+                        <div class="row" style="justify-content: space-between;">
+                            <div class="card-item col-xl-3 col-lg-4 col-md-6 col-sm-12 col-xs-12" *ngFor="let data of dataSource; let i=index">
+                                <div class="content">
+                                    <h1>{{GetTranslatedName (data.nameAr,data.nameEn) | async }}</h1>
+                                    <img src="/assets/img/locations/location-2.png" />
+                                </div>
+                                <div class="action-buttons">
+
+                                    <button mat-mini-fab color="primary" matTooltip="{{'edit'|translate}}">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+
+
+                                    <button mat-mini-fab color="accent" matTooltip="{{'Add device'|translate}}">
+                                        <span class="material-symbols-outlined">
+                                            stadia_controller
+                                        </span>
+                                    </button>
+
+                                    <button mat-mini-fab color="warn" matTooltip="{{'delete'|translate}}">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+
+                                </div>
+
+                                <!-- <div class="backdrop"></div> -->
+                            </div>
+                        </div>
+                        <mat-paginator [length]="dataSource?.length" showFirstLastButtons [pageSize]="MatPaginatorSize?.pageSize" [pageSizeOptions]="MatPaginatorSize?.pageSizeOptions" aria-label="Select page">
+                        </mat-paginator>
+                    </div>
+
+                    <div class="card-body" *ngIf="viewType === 'Grid'">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th *ngFor="let column of displayedColumns">
+                                        {{column}}
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of dataSource">
+                                        <td>
+                                            {{data.ID}}
+                                        </td>
+                                        <td>
+                                            {{GetTranslatedName (data.nameAr,data.nameEn) | async }}
+                                        </td>
+                                        <td class="actions">
+                                            <button mat-mini-fab color="primary" matTooltip="{{'edit'|translate}}">
+                                              <mat-icon>edit</mat-icon>
+                                            </button>
+
+                                            <button mat-mini-fab color="accent" matTooltip="{{'Add device'|translate}}">
+                                                <span class="material-symbols-outlined">
+                                                    stadia_controller
+                                                </span>
+                                            </button>
+
+                                            <button mat-mini-fab color="warn" matTooltip="{{'delete'|translate}}">
+                                              <mat-icon>delete</mat-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <mat-paginator [length]="dataSource?.length" showFirstLastButtons [pageSize]="MatPaginatorSize?.pageSize" [pageSizeOptions]="MatPaginatorSize?.pageSizeOptions" aria-label="Select page">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

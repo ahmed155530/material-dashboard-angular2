@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+}
+.mat-toggle {
+    text-align: center;
+    justify-content: center;
+}
+// .wrap {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100%;
+// }
+
+.card-item {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 300px;
+    height: 360px;
+    border-radius: 8px;
+    // border: solid #7149c6;
+    border-inline-start: 5px solid #f44336 ;
+    background: #fff;
+    overflow: hidden;
+    cursor: pointer;
+    //transform: scale(0.99);
+    transition: 0.4s ease-in-out;
+    z-index: 0;
+    box-shadow: 0 4px 30px rgba(#000, 0.1);
+    &:hover {
+        box-shadow: 0 4px 30px rgba(#000, 0.1);
+        transform: scale(1);
+        .backdrop {
+            top: 65%;
+        }
+    }
+    .backdrop {
+        position: absolute;
+        left: 50%;
+        top: 75%;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #8b3fd3 0%, #3f28dd 26.52%);
+        transform: translateX(-50%);
+        transition: top 0.4s ease-in-out;
+        z-index: -1;
+    }
+    .content {
+        padding: 5px 10px;
+        img {
+            position: absolute;
+            left: 50%;
+            //bottom: 30px;
+            width: 85%;
+            transform: translateX(-50%);
+        }
+        h1 {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-align: center;
+            color: #8ca9d3;
+            color: rgba(#000, 0.75);
+        }
+    }
+    .action-buttons {
+        width: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: space-around;
+        bottom: 10px;
+        .button {
+            margin: 0;
+            padding: 8px 11px;
+            border-radius: 8px;
+            background: #f4f4f4;
+            text-decoration: none;
+            font-size: 0.9rem;
+            //color: rgba(#000, 0.2);
+            transition: color 250ms ease;
+            &:hover {
+                background: #f0f0f0;
+                color: rgba(#000, 0.8);
+            }
+        }
+        &.action-buttons--left {
+            left: 10px;
+            a {
+                margin-right: 5px;
+            }
+        }
+        &.action-buttons--center {
+            left: 50%;
+            a {
+                margin-right: 5px;
+            }
+        }
+        &.action-buttons--right {
+            right: 10px;
+            a {
+                margin-left: 5px;
+            }
+        }
+    }
+}

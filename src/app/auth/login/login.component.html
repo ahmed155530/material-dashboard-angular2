@@ -1,0 +1,45 @@
+<div class="auth-container">
+    <div class="row auth-main left-img" style="background-image: url(./assets/img/auth-backgrounds/auth-background-1.jpg)">
+
+        <div class="col-sm-6 auth-form-section">
+            <div class="form-section">
+                <form class="auth-wrapper" [formGroup]="form" *ngIf="form">
+                    <h2 class="login-title">{{'Login'|translate}}</h2>
+                    <div class="row">
+                        <mat-form-field appearance="outline" class="col-sm-12 px-0 d-none d-sm-block">
+                            <mat-label>{{'username'|translate}}</mat-label>
+                            <input matInput formControlName="username">
+                            <mat-icon matPrefix>person</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-form-field appearance="outline" class="col-sm-12 px-0 d-none d-sm-block">
+                            <mat-label>{{'password'|translate}}</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-icon matPrefix>lock</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="row">
+
+                        <!-- <div class="example-button-container">
+                            <button mat-flat-button color="accent" matTooltip="{{'Clear'|translate}}" (click)="clearForm()">
+                              {{'Reset'|translate}}
+                            </button>
+                        </div> -->
+
+
+                        <button style="width: 100%;" mat-flat-button color="primary" [disabled]="!form.valid" matTooltip="{{'Login'|translate}}" (click)="Login()">
+                              <!-- <mat-icon style="color: pink;">close</mat-icon> -->
+                              {{'Login'|translate}}
+                        </button>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
